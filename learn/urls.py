@@ -21,7 +21,7 @@ urlpatterns = [
     path('contact/',contact,name='contact'),
     path('about/',about,name='about'),
     path('profile/',profile,name='profile'),
-
-
+    path('login/',login,name='login'),
+    path('register/',register,name='login'),
     path('admin/', admin.site.urls),
 ]
