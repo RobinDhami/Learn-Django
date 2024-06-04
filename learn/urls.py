@@ -20,6 +20,8 @@ urlpatterns = [
     path('',home,name='home'),
     path('contact/',contact,name='contact'),
     path('about/',about,name='about'),
+    path('profile/',profile,name='profile'),
+
 
     path('admin/', admin.site.urls),
 ]

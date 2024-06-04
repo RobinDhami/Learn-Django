@@ -9,11 +9,11 @@ def home(request):
              {'name':'Rabin kjjk','age':'20'}]
     return render (request,"index.html", context={'peoples':peoples})
 
-def about(req):
-    return render(req,'about.html')
+def about(request):
+    return render(request,'about.html')
 
-def profile(req):
-    return render(req,'profile.html')
+def profile(request):
+    return render(request,'profile.html')
 
-def contact(req):
-    return render(req,'contact.html')
+def contact(request):
+    return render(request,'contact.html')
