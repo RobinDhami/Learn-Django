@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml"> 
 <head> 
-<title>Horizontal Navigation Bar w/Rollover Effect</title> 
+{% block title %} <title>Home</title> {% endblock %}
 <style type="text/css"> 
 <!-- 
  
@@ -28,18 +28,82 @@
 	color: #000; 
 	background-color: #fff; 
 	} 
+	.site-footer {
+  background-color: #333;
+  color: white;
+  padding: 20px 0;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 15px;
+}
+
+.footer-about, .footer-links, .footer-contact {
+  flex: 1;
+  min-width: 200px;
+  margin-bottom: 20px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+h3 {
+  margin-top: 0;
+}
  
 --> 
 </style> 
 </head> 
 <body> 
-<div id="navbar"> 
+	<div>
+		<div id="navbar"> 
   <ul> 
-    <li><a href="/home">Home </a></li> 
-	<li><a href="/about">About</a></li> 
-	<li><a href="/contact">Contact </a></li> 
-	<li><a href="/Profile">Profile </a></li> 
-  </ul> 
+    <li><a href="{% url 'home'%}">Home </a></li> 
+	<li><a href="{% url 'about' %}">About</a></li> 
+	<li><a href="{% url 'contact'%}">Contact </a></li> 
+	<li><a href={% url 'profile'%}>Profile </a></li> 
 </div> 
+  </ul> 
+ 
+<div>
+	
+	</div>
+		</div>
+
+{% block start %}
+{% endblock%}
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-about">
+      <h3>About Us</h3>
+      <p>Our mission is to deliver exceptional web experiences.</p>
+    </div>
+    <div class="footer-links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-contact">
+      <h3>Contact Us</h3>
+      <p>Email: info@example.com</p>
+      <p>Phone: +123 456 7890</p>
+    </div>
+  </div>
+</footer>
 </body> 
 </html>
