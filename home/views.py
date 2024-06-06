@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login , logout 
-
+from .models import *
 # Create your views here.
 
 def home(request):
@@ -28,5 +28,15 @@ def login_view(request):
 
 def signup(request):
     data=request.POST
-    print(data)
+    if request.method=="POST":
+        data=request.POST
+        name=data.get("name")
+        image=request.FILES.get("img")
+        print(name)
+        print(image)
+        Student.objects.create(
+            name=name,
+            image=image,
+        )
+        return redirect('/login/')
     return render(request,'signup.html')
