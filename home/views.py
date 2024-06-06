@@ -27,12 +27,6 @@ def login_view(request):
     return render(request, 'login.html')
 
 def signup(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return 'success'    
-    else:
-        form = UserCreationForm()
-    return render(request, 'signup.html', {'form': form})
+    data=request.POST
+    print(data)
+    return render(request,'signup.html')
