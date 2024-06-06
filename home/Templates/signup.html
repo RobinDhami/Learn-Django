@@ -9,7 +9,7 @@
 
   <meta charset="UTF-8"> 
 
-  <title>CodePen - Animated Login Form using Html &amp; CSS Only</title> 
+  <title>Register</title> 
 
   <link rel="stylesheet" href="./style.css"> 
   <style>
@@ -208,28 +208,29 @@ input[type="submit"]:active
     <div class="content"> 
 
      <h2>Sign Up</h2> 
-<form action="{ % url'signup'%}" method="post">
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
   <div class="form"> 
 
     <div class="inputBox"> 
 
-     <input type="text" required> <i>Username</i> 
+     <input type="text" required name="name"> <i>Username</i> 
 
     </div> 
 
     <div class="inputBox"> 
 
-     <input type="password" required> <i>Password</i> 
+     <input type="password" required name="password"> <i>Password</i> 
 
     </div> 
     <div class="inputBox"> 
 
-      <input type="password" required> <i>Confirm Password</i> 
+      <input type="password" required name="confirm_password"> <i>Confirm Password</i> 
 
      </div> 
      <div class="inputBox"> 
 
-      <input type="file" required> <i></i> 
+      <input type="file" required name="img"> <i></i> 
 
      </div> 
 

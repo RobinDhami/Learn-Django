@@ -6,4 +6,4 @@ class Student(models.Model):
     age=models.IntegerField(default=20)
     contact=models.IntegerField()
     address = models.TextField()
-    image= models.ImageField()
+    image= models.ImageField(upload_to="stud")
