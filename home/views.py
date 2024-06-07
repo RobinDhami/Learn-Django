@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login , logout 
-from .models import *
+from django.contrib.auth import login, logout
+from .models import Student
+
 # Create your views here.
 
 def home(request):
@@ -27,11 +28,9 @@ def login_view(request):
     return render(request, 'login.html')
 
 def signup(request):
-    data=request.POST
-    if request.method=="POST":
-        data=request.POST
-        name=data.get("name")
-        image=request.FILES.get("img")
+    if request.method == "POST":
+        name = request.POST.get("name")
+        image = request.FILES.get("img")
         print(name)
         print(image)
         Student.objects.create(
@@ -39,4 +38,9 @@ def signup(request):
             image=image,
         )
         return redirect('/login/')
-    return render(request,'signup.html')
+    
+    queryset = Student.objects.all()
+    print(queryset)
+    context = {"students": queryset}
+    return render(request, 'signup.html', context)
+
