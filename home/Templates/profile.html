@@ -4,5 +4,7 @@
 <title>Profile</title>
 {% endblock %}
 {% block start %}
-{{ students}}
+{% for student in students%}
+{{ student.name}}
+{% endfor%}
 {% endblock %}
