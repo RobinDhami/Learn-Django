@@ -19,7 +19,11 @@ def about(request):
     return render(request, 'about.html')
 
 def profile(request):
-    return render(request, 'profile.html')
+    queryset = Student.objects.all()
+    print(queryset)
+    context = {"students": queryset}
+    print("context",context)
+    return render(request, 'profile.html',context)
 
 def contact(request):
     return render(request, 'contact.html')
@@ -31,16 +35,19 @@ def signup(request):
     if request.method == "POST":
         name = request.POST.get("name")
         image = request.FILES.get("img")
+        bio = request.POST.get("bio")
+        email = request.POST.get("email")
+        phone=request.POST.get("phone")
         print(name)
         print(image)
         Student.objects.create(
             name=name,
             image=image,
+            bio=bio,
+            email=email,
+            phone = phone,
         )
         return redirect('/login/')
     
-    queryset = Student.objects.all()
-    print(queryset)
-    context = {"students": queryset}
-    return render(request, 'signup.html', context)
+    return render(request, 'signup.html')
 
