@@ -14,6 +14,7 @@
             <th>Bio</th>
             <th>Phone No</th>
             <th>Email</th>
+            <th>Image</th>
         </tr>
     </thead>
     <tbody>
@@ -23,6 +24,7 @@
                 <td>{{ student.bio }}</td>
                 <td>{{ student.phone }}</td>
                 <td>{{ student.email }}</td>
+                <td > <img src="/media/{{ student.image}}" alt="" srcset="" style="height: 20%; width: 20%;"> </td>
             </tr>
         {% endfor %}
     </tbody>
