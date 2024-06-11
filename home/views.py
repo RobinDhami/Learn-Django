@@ -50,4 +50,8 @@ def signup(request):
         return redirect('/login/')
     
     return render(request, 'signup.html')
+def delete_profile(request,id):
+    queryset = Student.objects.get(id=id)
+    queryset.delete()
+    return redirect('/profile/')
 

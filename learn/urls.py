@@ -23,6 +23,7 @@ urlpatterns = [
     path('profile/',profile,name='profile'),
     path('login/',login_view,name='login'),
     path('register/',signup,name='login'),
+    path('delete-student/<id>/',delete_profile,name='delete_student'),
     path('admin/', admin.site.urls),
 ]
 
