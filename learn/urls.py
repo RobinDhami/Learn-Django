@@ -25,6 +25,7 @@ urlpatterns = [
     path('register/',signup,name='login'),
     path('delete-student/<id>/',delete_profile,name='delete_student'),
     path('admin/', admin.site.urls),
+
 ]
 
 from django.conf import settings

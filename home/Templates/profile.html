@@ -7,7 +7,7 @@
 {% block start %}
 <h1>Profile</h1>
 <h2>Registered Students</h2>
-<table border="3" style="margin: 5px; padding: 5px;">
+<table border="3" class="  bg-red-500 " >
     <thead>
         <tr >
             <th>Name</th>
@@ -26,8 +26,8 @@
                 <td>{{ student.phone }}</td>
                 <td>{{ student.email }}</td>
                 <td > <img src="/media/{{ student.image}}" alt="Profile" srcset="" style=" width: 15%;"> </td>
-                <td> <button> Delete</button>
-                    <button> Update</button>
+                <td> 
+                    <a href="/delete-student/{{ student.id}}"> delete</a>
                 </td>
             </tr>
         {% endfor %}
