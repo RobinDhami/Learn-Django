@@ -38,8 +38,7 @@ def signup(request):
         bio = request.POST.get("bio")
         email = request.POST.get("email")
         phone=request.POST.get("phone")
-        print(name)
-        print(image)
+
         Student.objects.create(
             name=name,
             image=image,
@@ -55,3 +54,23 @@ def delete_profile(request,id):
     queryset.delete()
     return redirect('/profile/')
 
+def update_student(request, id):
+    queryset = Student.objects.get(id=id)
+    
+    if request.method == 'POST':
+        name = request.POST.get("name")
+        image = request.FILES.get("img")
+        bio = request.POST.get("bio")
+        email = request.POST.get("email")
+        phone = request.POST.get("phone")
+        
+        # Update the queryset with the new data
+        queryset.name = name
+        queryset.image = image
+        queryset.bio = bio
+        queryset.email = email
+        queryset.phone = phone
+        queryset.save()
+        
+    context = {"student": queryset}
+    return render(request, 'update.html', context)
