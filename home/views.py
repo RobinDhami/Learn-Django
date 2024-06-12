@@ -71,6 +71,7 @@ def update_student(request, id):
         queryset.email = email
         queryset.phone = phone
         queryset.save()
-        
+        return redirect('/profile/')
+
     context = {"student": queryset}
     return render(request, 'update.html', context)
