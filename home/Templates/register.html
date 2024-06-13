@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Login</title> 
+{% endblock %}
+
+{% block start %}
+<form method="post" enctype="multipart/form-data" style="margin-top: 20px;">
+    {% csrf_token %}
+    <div class="form">
+        <div class="inputBox"> 
+            <input type="text" name="first_name"> <i>First Name</i> 
+        </div> 
+        <div class="inputBox"> 
+            <input type="text" required name="last_name"> <i>Last Name</i> 
+        </div> 
+        <div class="inputBox"> 
+            <input type="text" required name="username"> <i>Username</i> 
+        </div> 
+        <div class="inputBox"> 
+            <input type="password" required name="password"> <i>Password</i> 
+        </div>
+       
+        <div class="links"> 
+            <a href="#">Already have an account?</a> 
+            <a href="/login/">Login</a> 
+        </div> 
+        <div class="inputBox"> 
+            <input type="submit" value="Register"> 
+        </div> 
+    </div>
+</form> 
+
+<style>
+    .form {
+        margin: 0 auto;
+        width: 300px;
+        text-align: center;
+    }
+
+    .inputBox {
+        margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .links a {
+        text-decoration: none;
+        color: #007bff;
+        margin-right: 10px;
+    }
+
+    .links a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+{% endblock %}

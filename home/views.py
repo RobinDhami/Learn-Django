@@ -31,7 +31,7 @@ def contact(request):
 def login_view(request):
     return render(request, 'login.html')
 
-def signup(request):
+def AddData(request):
     if request.method == "POST":
         name = request.POST.get("name")
         image = request.FILES.get("img")
@@ -48,7 +48,8 @@ def signup(request):
         )
         return redirect('/login/')
     
-    return render(request, 'signup.html')
+    return render(request, 'AddData.html')
+
 def delete_profile(request,id):
     queryset = Student.objects.get(id=id)
     queryset.delete()
@@ -75,3 +76,6 @@ def update_student(request, id):
 
     context = {"student": queryset}
     return render(request, 'update.html', context)
+
+def register(request):
+    return render(request,'register.html')
