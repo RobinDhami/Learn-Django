@@ -77,5 +77,40 @@ def update_student(request, id):
     context = {"student": queryset}
     return render(request, 'update.html', context)
 
+from django.contrib.auth.models import User
+from django.contrib import messages
+
+from django.contrib import messages
+
 def register(request):
-    return render(request,'register.html')
+    if request.method == 'POST':
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        # Check if the User Email already exists
+        user_exists = User.objects.filter(username=username).exists()
+        if user_exists:
+            messages.info(request, 'User with this email already exists')
+            return redirect('/login/')  # Redirect back to registration page
+        
+        else:
+            # Create a new User object
+            user = User.objects.create(
+                first_name=first_name,
+                last_name=last_name,
+                username=username,
+            )
+
+            # Set the password using set_password() method
+            user.set_password(password)
+            
+            # Save the user object to the database
+            user.save()
+            messages.success(request, 'Account added successfully')
+            
+            # Redirect to login page after successful registration
+            return redirect('/login/')
+    
+    return render(request, 'register.html')

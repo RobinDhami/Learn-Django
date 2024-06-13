@@ -1,29 +1,43 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<title>Login</title> 
+<title>Register</title> 
 {% endblock %}
 
 {% block start %}
 <form method="post" enctype="multipart/form-data" style="margin-top: 20px;">
     {% csrf_token %}
+    {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
     <div class="form">
         <div class="inputBox"> 
-            <input type="text" name="first_name"> <i>First Name</i> 
+            <label for="first_name">First Name:</label>
+            <input type="text" name="first_name" id="first_name" required> 
         </div> 
         <div class="inputBox"> 
-            <input type="text" required name="last_name"> <i>Last Name</i> 
+            <label for="last_name">Last Name:</label>
+            <input type="text" name="last_name" id="last_name" required> 
         </div> 
         <div class="inputBox"> 
-            <input type="text" required name="username"> <i>Username</i> 
+            <label for="username">Username (Email):</label>
+            <input type="email" name="username" id="username" required> 
         </div> 
         <div class="inputBox"> 
-            <input type="password" required name="password"> <i>Password</i> 
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required> 
+        </div>
+        <div class="inputBox"> 
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" name="confirm_password" id="confirm_password" required> 
         </div>
        
         <div class="links"> 
-            <a href="#">Already have an account?</a> 
-            <a href="/login/">Login</a> 
+            <a href="{% url 'login' %}">Already have an account?</a> 
         </div> 
         <div class="inputBox"> 
             <input type="submit" value="Register"> 
@@ -43,7 +57,8 @@
     }
 
     input[type="text"],
-    input[type="password"] {
+    input[type="password"],
+    input[type="email"] {
         width: 100%;
         padding: 10px;
         border: 1px solid #ccc;
