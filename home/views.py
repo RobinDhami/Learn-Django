@@ -2,22 +2,19 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
 from .models import Student
 
 # Create your views here.
 
 def home(request):
-    peoples = [
-        {'name': 'Rabin Dhami', 'age': '27'},
-        {'name': 'karan yogi', 'age': '17'},
-        {'name': 'yogesh gwaje', 'age': '24'},
-        {'name': 'Rabin kjjk', 'age': '20'}
-    ]
-    return render(request, "index.html", context={'peoples': peoples})
+    return render(request, "index.html")
 
+@login_required(login_url='/login/')   #put the rout for where to redirect
 def about(request):
     return render(request, 'about.html')
 
+@login_required(login_url='login')
 def profile(request):
     queryset = Student.objects.all()
     print(queryset)
@@ -25,10 +22,9 @@ def profile(request):
     print("context",context)
     return render(request, 'profile.html',context)
 
+@login_required(login_url='/login/')
 def contact(request):
     return render(request, 'contact.html')
-
-
 
 def AddData(request):
     if request.method == "POST":
