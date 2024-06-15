@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate,login
 from .models import Student
 
 # Create your views here.
@@ -28,16 +28,7 @@ def profile(request):
 def contact(request):
     return render(request, 'contact.html')
 
-def login_view(request):
-    if request.method =='POST':
-        username= request.post.get("username")
-        password=request.post.get("password")
-        user = authenticate(username=username,password=password)
-        if user is None:
-            messages.error(request,'Invalid credentials')
-        else:
-            messages.success(request,'Login successfull')   
-    return render(request, 'login.html')
+
 
 def AddData(request):
     if request.method == "POST":
@@ -54,7 +45,7 @@ def AddData(request):
             email=email,
             phone = phone,
         )
-        return redirect('/login/')
+        return redirect('/profile/')
     
     return render(request, 'AddData.html')
 
@@ -122,3 +113,21 @@ def register(request):
             return redirect('/login/')
     
     return render(request, 'register.html')
+
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        user = authenticate(username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            messages.success(request, 'Login successful')
+            return redirect('profile')  
+        else:
+            messages.error(request, 'Invalid credentials')
+
+    # If GET request or authentication failed, render the login form
+    return render(request, 'login.html')
