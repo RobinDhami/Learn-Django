@@ -6,20 +6,15 @@ from django.contrib.auth.decorators import login_required
 from .models import Student
 
 # Create your views here.
-@login_required(login_url='login')
 
 def home(request):
-    peoples = [
-        {'name': 'Rabin Dhami', 'age': '27'},
-        {'name': 'karan yogi', 'age': '17'},
-        {'name': 'yogesh gwaje', 'age': '24'},
-        {'name': 'Rabin kjjk', 'age': '20'}
-    ]
-    return render(request, "index.html", context={'peoples': peoples})
+    return render(request, "index.html")
 
+@login_required(login_url='/login/')   #put the rout for where to redirect
 def about(request):
     return render(request, 'about.html')
 
+@login_required(login_url='login')
 def profile(request):
     queryset = Student.objects.all()
     print(queryset)
@@ -27,6 +22,7 @@ def profile(request):
     print("context",context)
     return render(request, 'profile.html',context)
 
+@login_required(login_url='/login/')
 def contact(request):
     return render(request, 'contact.html')
 
