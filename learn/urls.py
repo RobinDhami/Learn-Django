@@ -26,6 +26,8 @@ urlpatterns = [
     path('add/',AddData,name='login'),
     path('delete-student/<id>/',delete_profile,name='delete_student'),
     path('update-student/<id>/',update_student,name='update_student'),
+    path('logout/',logout_page,name='logout'),
+
     path('admin/', admin.site.urls),
 
 ]
