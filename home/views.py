@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login, logout
+from django.contrib.auth import authenticate
 from .models import Student
 
 # Create your views here.
@@ -29,6 +29,14 @@ def contact(request):
     return render(request, 'contact.html')
 
 def login_view(request):
+    if request.method =='POST':
+        username= request.post.get("username")
+        password=request.post.get("password")
+        user = authenticate(username=username,password=password)
+        if user is None:
+            messages.error(request,'Invalid credentials')
+        else:
+            messages.success(request,'Login successfull')   
     return render(request, 'login.html')
 
 def AddData(request):
