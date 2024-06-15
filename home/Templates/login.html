@@ -5,19 +5,19 @@
 {% endblock %}
 
 {% block start %}
-<div class="form"> 
-
+<form method="post"> 
+    {% csrf_token %}
     <ul class="messages">
         {% for message in messages %}
         <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
         {% endfor %}
     </ul>
     <div class="inputBox"> 
-        <input type="text" required> <i>Username</i> 
+        <input type="text" required name="username"> <i>Username</i> 
     </div> 
 
     <div class="inputBox"> 
-        <input type="password" required> <i>Password</i> 
+        <input type="password" required name="password"> <i>Password</i> 
     </div> 
 
     <div class="links"> 
@@ -29,7 +29,7 @@
         <input type="submit" value="Login"> 
     </div> 
 
-</div> 
+</form> 
 
 <style>
     .form {
