@@ -5,9 +5,9 @@
         <title>Add Data</title> 
     {% endblock %}
 
-    <div class="signin" style="background-color: #f2f2f2; padding: 20px;"> 
-        <div class="content" style="background-color: #fff; padding: 20px; border-radius: 5px; box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);"> 
-            <h2 style="text-align: center;">Add Data</h2> 
+    <div class="signin" > 
+        <div class="content" style="width: 50%; justify-content: center; padding-left:30%; padding-bottom: 5%; padding-top: 5%; "> 
+            <div style="align-items: center "><h2>Add Data</h2> </div>
             <form method="post" enctype="multipart/form-data" style="margin-top: 20px;">
                 {% csrf_token %}
                 <div class="form"> 
@@ -43,14 +43,15 @@
                             <input type="text" class="form-control" required name="phone">
                         </div>
                     </div>
-                    <div class="inputBox" style="margin-bottom: 15px;"> 
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Profile</span>
-                            </div>
-                            <input type="file" class="form-control" required name="img">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <button class="btn btn-outline-secondary" type="button">Button</button>
                         </div>
-                    </div> 
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" name="img" id="inputGroupFile03">
+                          <label class="custom-file-label" for="inputGroupFile03">Choose file</label>
+                        </div>
+                      </div>
                     <div class="links" style="margin-bottom: 15px;"> Dont have an account yet? <a href="#" style="color: blue;">Add Data</a> </div> 
                     <div class="inputBox"> 
                         <input type="submit" value="Register" style="width: 100%; padding: 10px; border: none; border-radius: 5px; background-color: #4CAF50; color: white; cursor: pointer;"> 
