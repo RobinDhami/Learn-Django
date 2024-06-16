@@ -1,6 +1,10 @@
-{% extends 'base.html'%}
-{% block title %} <title>Conatct</title> {% endblock %}
+{% extends 'base.html' %}
 
-{% block start%}
-<h2> This is Contact page</h2>
-{% endblock%}
+{% block title %}<title>Contact</title>{% endblock %}
+
+{% block start %}
+    <h2>Your Contacts</h2>
+    {% for student in students %}
+        <h3>{{ student.name}}: {{ student.phone }}</h3>
+    {% endfor %}
+{% endblock %}
