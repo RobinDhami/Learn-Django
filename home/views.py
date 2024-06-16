@@ -24,7 +24,11 @@ def profile(request):
 
 @login_required(login_url='/login/')
 def contact(request):
-    return render(request, 'contact.html')
+    queryset = Student.objects.all()
+    print(queryset)
+    context = {"students": queryset}
+    print("context",context)
+    return render(request, 'contact.html',context)
 
 def AddData(request):
     if request.method == "POST":

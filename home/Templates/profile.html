@@ -5,17 +5,17 @@
 {% endblock %}
 
 {% block start %}
-<h1>Profile</h1>
+<h1>{{request.user.first_name}} {{request.user.last_name}}</h1>
 <h2>Registered Students</h2>
-<table border="3" class="  bg-red-500 " >
-    <thead>
+<table class="table table-hover table-sm table-bordered" >
+    <thead class="thead-dark">
         <tr >
-            <th>Name</th>
-            <th>Bio</th>
-            <th>Phone No</th>
-            <th>Email</th>
-            <th>Image</th>
-            <th> Action</th>
+            <th scope="col">Name</th>
+            <th scope="col">Bio</th>
+            <th scope="col">Phone No</th>
+            <th scope="col">Email</th>
+            <th scope="col">Image</th>
+            <th scope="col"> Action</th>
         </tr>
     </thead>
     <tbody>
