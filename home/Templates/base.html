@@ -72,9 +72,9 @@
         <li><a href="{% url 'contact' %}">Contact</a></li>
         {% if request.user.is_authenticated %}
         <li><a href="{% url 'profile' %}">Profile</a></li>
-        <li><a href="/logout/">Logout</a></li>
+        <button type="button" class="btn btn-danger"><a href="/logout/">Logout</a></button>
         {% else %}
-        <li><a href="/login/">Login</a></li>
+        <button type="button" class="btn btn-success"><a href="/login/">Login</a></button>
         {% endif %}
     </ul>
 </div>

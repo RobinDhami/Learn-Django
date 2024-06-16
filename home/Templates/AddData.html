@@ -12,19 +12,44 @@
                 {% csrf_token %}
                 <div class="form"> 
                     <div class="inputBox" style="margin-bottom: 15px;"> 
-                        <input type="text" required name="name" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"> <i>Your Name</i> 
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Your Name</span>
+                            </div>
+                            <input type="text" class="form-control" required name="name">
+                        </div>
                     </div>
                     <div class="inputBox" style="margin-bottom: 15px;"> 
-                        <input type="text" required name="email" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"> <i>Your Email</i> 
-                    </div> 
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Email</span>
+                            </div>
+                            <input type="email" class="form-control" required name="email">
+                        </div>
+                    </div>
                     <div class="inputBox" style="margin-bottom: 15px;"> 
-                        <input type="text" required name="bio" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"> <i>Describe about Yourself</i> 
-                    </div> 
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Bio</span>
+                            </div>
+                            <input type="text" class="form-control" required name="bio">
+                        </div>
+                    </div>
                     <div class="inputBox" style="margin-bottom: 15px;"> 
-                        <input type="number" required name="phone" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"> <i>Phone No</i> 
-                    </div> 
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Phone No</span>
+                            </div>
+                            <input type="text" class="form-control" required name="phone">
+                        </div>
+                    </div>
                     <div class="inputBox" style="margin-bottom: 15px;"> 
-                        <input type="file" required name="img" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"> <i>Your Image</i> 
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Profile</span>
+                            </div>
+                            <input type="file" class="form-control" required name="img">
+                        </div>
                     </div> 
                     <div class="links" style="margin-bottom: 15px;"> Dont have an account yet? <a href="#" style="color: blue;">Add Data</a> </div> 
                     <div class="inputBox"> 
