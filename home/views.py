@@ -30,6 +30,7 @@ def contact(request):
     print("context",context)
     return render(request, 'contact.html',context)
 
+@login_required(login_url='/login/')
 def AddData(request):
     if request.method == "POST":
         name = request.POST.get("name")
@@ -53,6 +54,7 @@ def delete_profile(request,id):
     queryset = Student.objects.get(id=id)
     queryset.delete()
     return redirect('/profile/')
+
 
 def update_student(request, id):
     queryset = Student.objects.get(id=id)
