@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
+#Learn concept of aggregate foreign key annotate learn how to play with dat
 class Student(models.Model):
     User= models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True) #This is used to authenticate user
     name=models.CharField(max_length=100)
