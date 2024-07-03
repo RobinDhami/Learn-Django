@@ -3,4 +3,5 @@
 
 {% block start%}
 <h2>Hello this is my account {{request.user.first_name}} {{request.user.last_name}} </h2>
+<img src="/media/{{request.user.image}}" alt="" srcset="">
 {% endblock%}
