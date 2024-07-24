@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-
 # Create your models here.
 #Learn concept of aggregate foreign key annotate learn how to play with data
 
@@ -11,6 +10,9 @@ class Student(models.Model):
     email=models.EmailField(unique=True,default="")
     bio= models.TextField(blank=True)
     phone= models.CharField(max_length=20, null=True, blank=True) 
+
+    def __str__(self) -> str:
+        return self.name
 
 class Department(models.Model):
     department = models.CharField(max_length=100)
